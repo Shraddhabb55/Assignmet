@@ -1,27 +1,27 @@
 import java.util.*;
 class TeamStats
 {
-    String teamName;
-    int teamPoints;
+    String nameOfTeam;
+    int pointsOfTeam;
     String [] lastFiveMatchResults;
     int totalPointsOfTeamsWithConsecutiveWinOrLose= 0;
     ArrayList<String> teamsWithConsecutiveWinOrLose = new ArrayList<>();
-    public TeamStats(String teamName , int teamPoints , String [] lastFiveMatchResults )
+    public TeamStats(String nameOfTeam , int pointsOfTeam , String [] lastFiveMatchResults )
     {
-        this.teamName = teamName;
-        this.teamPoints = teamPoints;
+        this.nameOfTeam = nameOfTeam;
+        this.pointsOfTeam = pointsOfTeam;
         this.lastFiveMatchResults = lastFiveMatchResults;
     }
-    public String getTeamName()
+    public String getnameOfTeam()
     {
-        return this.teamName;
+        return this.nameOfTeam;
     }
     public int getTeamPoints()
     {
-        return this.teamPoints;
+        return this.pointsOfTeam;
     }
 
-    public void consecutiveWinOrLose(ArrayList <TeamStats> teamsStats , String userInputOfWinOrLose , int n)
+    public void successiveWinOrLose(ArrayList <TeamStats> teamsStats , String userInputOfWinOrLose , int n)
     {
         for (int teamIndex = 0; teamIndex < teamsStats.size(); teamIndex++) {
             int count = 1;
@@ -36,8 +36,9 @@ class TeamStats
                     count++;
                 }
             }
-            if (count >= n) {
-                teamsWithConsecutiveWinOrLose.add(teamsStats.get(teamIndex).getTeamName());
+            if (count >= n) 
+            {
+                teamsWithConsecutiveWinOrLose.add(teamsStats.get(teamIndex).getnameOfTeam());
                 totalPointsOfTeamsWithConsecutiveWinOrLose = totalPointsOfTeamsWithConsecutiveWinOrLose + teamsStats.get(teamIndex).getTeamPoints();
             }
         }
@@ -65,7 +66,7 @@ class TeamStats
     public String toString()
     {
 
-        return (this.teamName+" \t"+this.teamPoints+" \t"+Arrays.toString(this.lastFiveMatchResults));
+        return (this.nameOfTeam+" \t"+this.pointsOfTeam+" \t"+Arrays.toString(this.lastFiveMatchResults));
     }
 
 }
@@ -96,7 +97,7 @@ public class Main
         String userInputOfWinOrLose = sc.next().toUpperCase();
         System.out.println("Enter the number for the times you want to know consecutives" + " " +userInputOfWinOrLose);
         int n = sc.nextInt();
-        stats.consecutiveWinOrLose(teamsStats , userInputOfWinOrLose , n);
+        stats.successiveWinOrLose(teamsStats , userInputOfWinOrLose , n);
         stats.listOfTeamsWithConsecutiveWinOrLose();
 
 }
